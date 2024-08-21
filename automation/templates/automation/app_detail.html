@@ -1,0 +1,100 @@
+{% extends "automation/layout.html" %}
+{% load i18n %}
+{% block title %}{% trans "Application" %}{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <div class="mb-4 page_title_holder">
+        <h2 class="page_title">{{ object.name }}</h2>
+    </div>
+
+    <h3># {{ object.id }} {% trans "Uploaded by" %} "{{ object.uploaded_by.username }}"</h3>
+
+    <div class="row mt-4">
+        <div>
+            <h3>{% trans "Details:" %}</h3>
+            <p><strong>{% trans "APK File" %}:</strong> <a href="{{ object.apk_file_path.url }}"  download>{% trans "Click to download" %} <i class="fa-solid fa-download fa-l" style="color: #FFD43B;"></i></a></p>
+            <p><strong>{% trans "Created At" %}:</strong> {{ object.created_at|date:"F j, Y, g:i a" }}</p>
+            <p><strong>{% trans "Updated At" %}:</strong> {{ object.updated_at|date:"F j, Y, g:i a" }}</p>
+            <p>
+                <strong>{% trans "Tested" %}:</strong>
+                {% if object.is_tested %}
+                <i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i>                        
+                {% else %}
+                <i class="fa-solid fa-xmark" style="color: #ff0033;"></i>
+                {% endif %}
+            </p>
+            <p>
+                <strong>{% trans "Screen Changed" %}:</strong>
+                {% if object.screen_changed %}
+                <i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i>                        
+                {% else %}
+                <i class="fa-solid fa-xmark" style="color: #ff0033;"></i>
+                {% endif %}
+            </p>
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'automation:user_apps' %}" class="btn btn-outline-secondary">{% trans "Back to My Apps" %}</a>
+        <a href="{% url 'automation:app_delete' object.slug %}" class="btn btn-outline-danger">{% trans "Delete" %}</a>
+        <a href="{% url 'automation:app_update' object.slug %}" class="btn btn-outline-info">{% trans "Edit" %}</a>
+        <a id="test_btn" href="{% url 'automation:app_test' object.slug %}" class="ms-4 btn btn-outline-success">{% trans "Run Test" %}</a>
+        <button id="loading_btn" class="ms-4 btn btn-outline-success" style="display: none" disabled>
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">{% trans "Test is Loading" %}...</span>
+        </button>
+
+    </div>
+
+    {% comment %}         Test Section             {% endcomment %}
+    {% if object.ui_hierarchy %}
+    
+    <hr>
+    <div class="mb-4 page_title_holder">
+        <h2 class="page_title">{% trans "Test Result" %}</h2>
+    </div>
+    <h2>{% trans "Media:" %}</h2>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-4">
+            <p>{% trans "Video Recording" %}</p>
+            <video controls  style="height: 500px; width:280px;">
+                <source src="{{ object.video_recording_path.url }}" type="video/mp4">
+                {% trans "Your browser does not support the video tag." %}
+            </video>
+        </div>
+        <div class="col-md-4">
+            <p>{% trans "First Screen Screenshot" %}</p>
+            <img src="{{ object.first_screen_screenshot_path.url }}"  alt="{% trans 'First Screen Screenshot' %}" style="height: 500px; width:280px;">
+        </div>
+        <div class="col-md-4">
+            <p >{% trans "Second Screen Screenshot" %}</p>
+            <img src="{{ object.second_screen_screenshot_path.url }}"  alt="{% trans 'Second Screen Screenshot' %}" style="height: 500px; width:280px;">
+        </div>
+    </div>
+    {% endif %}
+
+    {% comment %}         UI Section             {% endcomment %}
+
+    {% if hierarchy_content %}
+    <h2 class="mt-4">{% trans "UI Elements:" %}</h2>
+    <a href="{{ object.ui_hierarchy.url }}"  download>{% trans "Click to download .xml" %} <i class="fa-solid fa-download fa-l" style="color: #FFD43B;"></i></a>
+    <div class="mt-4 ui_container ">
+        {{ hierarchy_content|safe }}
+    </div>
+    {% endif %}
+    
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    test_btn = document.getElementById('test_btn')
+    test_btn.addEventListener('click', function() {
+        test_btn.style.display = 'none';
+        document.getElementById('loading_btn').style.display = 'inline-block';
+    });
+</script>
+
+{% endblock %}

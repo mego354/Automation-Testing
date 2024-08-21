@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-22 01:30+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\automation\forms.py:8
+msgid "This field is required."
+msgstr "Ce champ est obligatoire"
+
+#: .\automation\forms.py:9
+msgid "Enter a valid value."
+msgstr "Entrez une valeur valide"
+
+#: .\automation\forms.py:10
+#, python-brace-format
+msgid ""
+"Ensure this value has at most {max_length} characters (it has {length})."
+msgstr ""
+"Este valor debe tener como máximo {max_length} caracteres (tiene {length})."
+
+#: .\automation\forms.py:11
+#, python-brace-format
+msgid ""
+"Ensure this value has at least {min_length} characters (it has {length})."
+msgstr ""
+"Este valor debe tener al menos {min_length} caracteres (tiene {length})."
+
+#: .\automation\forms.py:12
+msgid "The two password fields didn't match."
+msgstr "Les deux champs de mot de passe ne correspondent pas."
+
+#: .\automation\forms.py:53 .\automation\models.py:35
+msgid "App name"
+msgstr "Gestionnaire d'applications"
+
+#: .\automation\forms.py:54 .\automation\models.py:43
+msgid "APK File Path"
+msgstr "Chemin du fichier APK"
+
+#: .\automation\forms.py:57
+msgid "Enter the name of the application."
+msgstr "Créer une application"
+
+#: .\automation\forms.py:58
+msgid "Choose an APK."
+msgstr "Choisissez un APK"
+
+#: .\automation\forms.py:75
+msgid "The file must be an APK."
+msgstr "Le fichier doit être un APK."
+
+#: .\automation\models.py:28
+msgid "The folder path does not exist."
+msgstr "Le chemin du dossier n'existe pas."
+
+#: .\automation\templates\automation\app_delete.html:3
+#: .\automation\templates\automation\app_detail.html:3
+#: .\automation\templates\automation\app_form.html:3
+msgid "Application"
+msgstr "Application"
+
+#: .\automation\templates\automation\app_delete.html:8
+msgid "Confirm Delete"
+msgstr "Confirmer la suppression"
+
+#: .\automation\templates\automation\app_delete.html:14
+#: .\automation\templates\automation\app_detail.html:40
+msgid "Delete"
+msgstr "supprimer"
+
+#: .\automation\templates\automation\app_delete.html:16
+msgid "Are you sure you want to delete application"
+msgstr "Etes-vous sûr de vouloir supprimer l'application"
+
+#: .\automation\templates\automation\app_delete.html:17
+#: .\automation\templates\registration\password_reset_confirm.html:14
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: .\automation\templates\automation\app_delete.html:21
+msgid "Cancel"
+msgstr "Annuler"
+
+#: .\automation\templates\automation\app_detail.html:10
+msgid "Uploaded by"
+msgstr "Téléchargé par"
+
+#: .\automation\templates\automation\app_detail.html:14
+msgid "Details:"
+msgstr "Détails"
+
+#: .\automation\templates\automation\app_detail.html:15
+msgid "APK File"
+msgstr "Fichier APK"
+
+#: .\automation\templates\automation\app_detail.html:15
+msgid "Click to download"
+msgstr "Cliquez pour télécharger"
+
+#: .\automation\templates\automation\app_detail.html:16
+msgid "Created At"
+msgstr "Créé à"
+
+#: .\automation\templates\automation\app_detail.html:17
+msgid "Updated At"
+msgstr "Mis à jour à"
+
+#: .\automation\templates\automation\app_detail.html:19
+#: .\automation\templates\automation\apps_list.html:20
+msgid "Tested"
+msgstr "Testé"
+
+#: .\automation\templates\automation\app_detail.html:27
+msgid "Screen Changed"
+msgstr "Écran changé"
+
+#: .\automation\templates\automation\app_detail.html:39
+msgid "Back to My Apps"
+msgstr "Retour à mes applications"
+
+#: .\automation\templates\automation\app_detail.html:41
+msgid "Edit"
+msgstr "Modifier"
+
+#: .\automation\templates\automation\app_detail.html:42
+msgid "Run Test"
+msgstr "Exécuter le test"
+
+#: .\automation\templates\automation\app_detail.html:45
+msgid "Test is Loading"
+msgstr "Le test est en cours de chargement"
+
+#: .\automation\templates\automation\app_detail.html:56
+msgid "Test Result"
+msgstr "Résultat du test"
+
+#: .\automation\templates\automation\app_detail.html:58
+msgid "Media:"
+msgstr "Médias"
+
+#: .\automation\templates\automation\app_detail.html:61
+msgid "Video Recording"
+msgstr "Enregistrement vidéo"
+
+#: .\automation\templates\automation\app_detail.html:64
+msgid "Your browser does not support the video tag."
+msgstr "Votre navigateur ne prend pas en charge la balise vidéo."
+
+#: .\automation\templates\automation\app_detail.html:68
+#: .\automation\templates\automation\app_detail.html:69
+msgid "First Screen Screenshot"
+msgstr "Capture d'écran du premier écran"
+
+#: .\automation\templates\automation\app_detail.html:72
+#: .\automation\templates\automation\app_detail.html:73
+msgid "Second Screen Screenshot"
+msgstr "Capture d'écran du deuxième écran"
+
+#: .\automation\templates\automation\app_detail.html:82
+msgid "UI Elements:"
+msgstr "Éléments de l'interface utilisateur :"
+
+#: .\automation\templates\automation\app_detail.html:83
+msgid "Click to download .xml"
+msgstr "Cliquez pour télécharger le fichier .xml"
+
+#: .\automation\templates\automation\app_form.html:10
+msgid "Edit "
+msgstr "Modifier"
+
+#: .\automation\templates\automation\app_form.html:12
+msgid "Create Application"
+msgstr "Créer une application"
+
+#: .\automation\templates\automation\app_form.html:23
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: .\automation\templates\automation\apps_list.html:4
+msgid "Application Management"
+msgstr "Gestionnaire d'applications"
+
+#: .\automation\templates\automation\apps_list.html:8
+msgid "Manage Your Apps"
+msgstr "Gérez vos applications"
+
+#: .\automation\templates\automation\apps_list.html:12
+msgid "Create new App"
+msgstr "Créer une nouvelle application"
+
+#: .\automation\templates\automation\apps_list.html:18
+msgid "App Name"
+msgstr "Gestionnaire d'applications"
+
+#: .\automation\templates\automation\apps_list.html:19
+msgid "Uploaded At"
+msgstr "Téléchargé par"
+
+#: .\automation\templates\automation\apps_list.html:21
+msgid "Actions"
+msgstr "Actes"
+
+#: .\automation\templates\automation\apps_list.html:48
+msgid "No apps found."
+msgstr "Aucune application trouvée."
+
+#: .\automation\templates\automation\apps_list.html:59
+#: .\automation\templates\automation\apps_list.html:61
+msgid "Previous"
+msgstr "précédente"
+
+#: .\automation\templates\automation\apps_list.html:66
+#: .\automation\templates\automation\apps_list.html:68
+msgid "Next"
+msgstr "suivante"
+
+#: .\automation\templates\automation\home.html:3
+#: .\automation\templates\automation\layout.html:33
+msgid "Home"
+msgstr "Maison"
+
+#: .\automation\templates\automation\home.html:7
+#: .\automation\templates\automation\home.html:8
+#: .\automation\templates\automation\home.html:10 .\automation\views.py:53
+msgid "Welcome to App Manager"
+msgstr "Bienvenue sur le gestionnaire d'applications"
+
+#: .\automation\templates\automation\home.html:11
+msgid "Start App Manager"
+msgstr "Démarrer le gestionnaire d'applications"
+
+#: .\automation\templates\automation\layout.html:8
+msgid "Automation Testing"
+msgstr "Tests d'automatisation"
+
+#: .\automation\templates\automation\layout.html:26
+msgid "App Manager"
+msgstr "Gestionnaire d'applications"
+
+#: .\automation\templates\automation\layout.html:36
+msgid "Apps"
+msgstr "Applications"
+
+#: .\automation\templates\automation\layout.html:46
+msgid "English"
+msgstr "anglaise"
+
+#: .\automation\templates\automation\layout.html:47
+msgid "French"
+msgstr "français"
+
+#: .\automation\templates\automation\layout.html:52
+msgid "Small"
+msgstr "Petite"
+
+#: .\automation\templates\automation\layout.html:53
+msgid "Medium"
+msgstr "Moyen"
+
+#: .\automation\templates\automation\layout.html:54
+msgid "Large"
+msgstr "Grande"
+
+#: .\automation\templates\automation\layout.html:55
+msgid "Very Large"
+msgstr "Très Grand"
+
+#: .\automation\templates\automation\layout.html:60
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: .\automation\templates\automation\layout.html:67
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: .\automation\templates\automation\layout.html:70
+#: .\automation\templates\registration\login.html:3
+#: .\automation\templates\registration\login.html:8
+#: .\automation\templates\registration\login.html:15
+msgid "Login"
+msgstr "se connecter"
+
+#: .\automation\templates\automation\layout.html:87
+msgid "2024 Your Company. All rights reserved."
+msgstr "2024 Votre entreprise. Tous droits réservés."
+
+#: .\automation\templates\automation\layout.html:88
+msgid "Privacy Policy"
+msgstr "politique de confidentialité"
+
+#: .\automation\templates\automation\layout.html:88
+msgid "Terms of Service"
+msgstr "Conditions d'utilisation"
+
+#: .\automation\templates\registration\login.html:17
+msgid "Forget your password? "
+msgstr "Mot de passe oublié ?"
+
+#: .\automation\templates\registration\login.html:17
+#: .\automation\templates\registration\login.html:18
+msgid "Click here"
+msgstr "Cliquez ici"
+
+#: .\automation\templates\registration\login.html:18
+msgid "Dont have an account? "
+msgstr "Je n'ai pas de compte?"
+
+#: .\automation\templates\registration\password_change_form.html:3
+#: .\automation\templates\registration\password_change_form.html:7
+#: .\automation\templates\registration\password_change_form.html:14
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+#: .\automation\templates\registration\password_reset_confirm.html:3
+#: .\automation\templates\registration\password_reset_confirm.html:7
+msgid "Reset Password Confirm"
+msgstr "Réinitialiser le mot de passe Confirmer"
+
+#: .\automation\templates\registration\password_reset_email.html:4
+msgid "Hi"
+msgstr "Salut"
+
+#: .\automation\templates\registration\password_reset_email.html:6
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at Automation."
+msgstr ""
+"Vous recevez cet e-mail car vous avez demandé une réinitialisation de mot de "
+"passe pour votre compte utilisateur  chez Automation."
+
+#: .\automation\templates\registration\password_reset_email.html:8
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+"Veuillez vous rendre sur la page suivante et choisir un nouveau mot de "
+"passe :"
+
+#: .\automation\templates\registration\password_reset_email.html:12
+msgid "Your username, in case you’ve forgotten:"
+msgstr "Votre nom d'utilisateur, au cas où vous l'auriez oublié :"
+
+#: .\automation\templates\registration\password_reset_email.html:14
+msgid "Thanks for using our site!"
+msgstr "Merci d'utiliser notre site !"
+
+#: .\automation\templates\registration\password_reset_email.html:16
+msgid "The Automation Support team"
+msgstr "L'équipe de support d'automatisation"
+
+#: .\automation\templates\registration\password_reset_form.html:3
+#: .\automation\templates\registration\password_reset_form.html:7
+#: .\automation\templates\registration\password_reset_form.html:14
+msgid "Reset Password"
+msgstr "réinitialiser le mot de passe"
+
+#: .\automation\templates\registration\password_reset_subject.txt:3
+#, fuzzy
+#| msgid "Password Reset Sent"
+msgid "Password Reset Request"
+msgstr "Réinitialisation du mot de passe envoyée"
+
+#: .\automation\templates\registration\register.html:3
+#: .\automation\templates\registration\register.html:7
+#: .\automation\templates\registration\register.html:14
+msgid "Register"
+msgstr "Registre"
+
+#: .\automation\views.py:33
+msgid "Password's been changed successfully!"
+msgstr "Votre mot de passe a été modifié avec succès."
+
+#: .\automation\views.py:38
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"the email shortly!"
+msgstr ""
+"Nous vous avons envoyé par e-mail des instructions pour définir votre mot de "
+"passe. Vous devriez recevoir l'e-mail sous peu !"
+
+#: .\automation\views.py:43
+msgid "Password's been changed successfully, try to login"
+msgstr "Le mot de passe a été modifié avec succès, essayez de vous connecter"
+
+#: .\automation\views.py:78 .\automation\views.py:114
+#: .\automation\views.py:128
+msgid "The App saved successfully"
+msgstr "L'application a été enregistrée avec succès"
+
+#: .\automation\views.py:90 .\automation\views.py:110
+#: .\automation\views.py:124
+msgid "App not found."
+msgstr "Application non trouvée."
+
+#: .\automation\views.py:149
+msgid "The app's been Tested successfully"
+msgstr "L'application a été enregistrée avec succès"
+
+#: .\automation\views.py:151
+msgid "Unfortunately an error happened, please try again.."
+msgstr "Malheureusement, une erreur s'est produite, veuillez réessayer."
+
+#~ msgid "on"
+#~ msgstr "sur"
+
+#~ msgid "No video recording uploaded."
+#~ msgstr "Aucun enregistrement vidéo n'a été téléchargé."
+
+#~ msgid "No first screen screenshot uploaded."
+#~ msgstr "Aucune capture d'écran du premier écran n'a été téléchargée."
+
+#~ msgid "No second screen screenshot uploaded."
+#~ msgstr "Aucune capture d'écran du deuxième écran n'a été téléchargée."
+
+#~ msgid "Password Reset Complete"
+#~ msgstr "Réinitialisation du mot de passe terminée"
+
+#~ msgid ""
+#~ "Your password has been successfully reset. You can now log in with your "
+#~ "new password."
+#~ msgstr ""
+#~ "Votre mot de passe a été réinitialisé avec succès. Vous pouvez désormais "
+#~ "vous connecter avec votre nouveaumot de passe"
+
+#~ msgid "An email has been sent with instructions to reset your password."
+#~ msgstr ""
+#~ "Un e-mail a été envoyé avec des instructions pour réinitialiser votre mot "
+#~ "de passe."
+
+#~ msgid "Dark Mode"
+#~ msgstr "Humeur sombre"
+
+#~ msgid "App"
+#~ msgstr "Application"
+
+#~ msgid "Choose File"
+#~ msgstr "choisir le fichier"
+
+#~ msgid "No File chosen"
+#~ msgstr "Aucun fichier choisi"

@@ -1,0 +1,26 @@
+<!-- your_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML to HTML</title>
+    <style>
+        .ui_container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .ui_element {
+            border: 1px solid #ccc;
+            padding: 2px 2px;
+            transition: all 0.3s ease;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="ui_container">
+        <!-- Render the HTML content as safe HTML -->
+        {{ html_content|safe }}
+    </div>
+</body>
+</html>

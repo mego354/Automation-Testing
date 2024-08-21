@@ -1,0 +1,22 @@
+{% extends "automation/layout.html" %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block body %}
+
+    <div class="mb-4 page_title_holder">
+        <h2 class="page_title">{% trans "Login" %}</h2>
+    </div> 
+
+    <form method="post" class="styled-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-container">
+            <button type="submit">{% trans "Login" %}</button>
+        </div>
+        <p class="mt-2">{% trans "Forget your password? " %}<a href={% url 'automation:password_reset' %}>{% trans "Click here" %}</a></p>
+        <p class="mt-2">{% trans "Dont have an account? " %}<a href={% url 'automation:register' %}>{% trans "Click here" %}</a></p>
+    </form>
+    
+
+{% endblock %}
