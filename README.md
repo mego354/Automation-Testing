@@ -116,7 +116,7 @@ enter the root's password
 Open project/core/settings.py.
 Update the MySQL database connection settings:
 
-   ```json
+   ```python
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -198,7 +198,7 @@ To see what's happening under the hood:
 
 1. Comment line 67 in project/automation/testing.
 2. Uncomment line 64 in project/automation/testing.
-3. Restart the server and start the app. This will allow you to observe the emulator while the test is running.
+3. Restart the server and start the app test again. This will allow you to observe the emulator while the test is running.
 
 
     
