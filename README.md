@@ -109,7 +109,7 @@ enter the root's password
 1. Clone the repository using the following command:
 
    ```sh
-    git clone https://github.com/mego354/automation-test.git
+    git clone https://github.com/mego354/Automation-Testing.git
    ```
 
 2. Update Database Configuration
