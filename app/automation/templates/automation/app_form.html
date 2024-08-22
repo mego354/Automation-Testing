@@ -1,0 +1,29 @@
+{% extends "automation/layout.html" %}
+{% load i18n %}
+{% block title %}{% trans "Application" %}{% endblock %}
+
+{% block body %}
+
+    <div class="mb-4 page_title_holder">
+        <h2 class="page_title">
+            {% if object %}
+                {% trans "Edit " %}{{object.name}}
+            {% else %}
+                {% trans "Create Application" %}
+            {% endif %}
+        </h2>
+
+    </div> 
+
+    <form method="post" enctype="multipart/form-data" class="styled-form">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-container">
+            <button type="submit">{% trans "Save" %}</button>
+        </div>
+        
+    </form>
+    
+
+{% endblock %}

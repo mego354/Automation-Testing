@@ -1,0 +1,77 @@
+{% extends "automation/layout.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Application Management" %}{% endblock %}
+{% block body %}
+
+    <div class="mb-4 page_title_holder">
+        <h2 class="page_title">{% trans "Manage Your Apps" %}</h2>
+    </div> 
+
+    <div class="container mt-5">
+        <a class=" mb-1 btn btn-outline-info" href="{% url 'automation:create_app' %}" role="button">{% trans "Create new App" %}</a>
+
+        <table class="table table-dark table-hover text-center">
+            <thead >
+                <tr>
+                    <th scope="col">#</th>
+                    <th>{% trans "App Name" %}</th>
+                    <th>{% trans "Uploaded At" %}</th>
+                    <th>{% trans "Tested" %}</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for app in object_list %}
+                <tr>
+                    <th scope="row">{{ app.id }}</th>
+                    <td>{{app.name}}</td>
+                    <td>{{app.created_at}}</td>
+                    
+                    <td>
+                        {% if app.is_tested %}
+                        <i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i>                        
+                        {% else %}
+                        <i class="fa-solid fa-xmark fa-xl" style="color: #ff0033;"></i>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <a href="{% url 'automation:app_detail' slug=app.slug %}"><i class="fa-solid fa-eye fa-xl" style="color: #74C0FC; padding-right:10px;"></i></a>
+                        <a href="{% url 'automation:app_update' slug=app.slug %}"><i class="fa-solid fa-pen-to-square fa-xl" style="color: #74C0FC; padding-right:10px;"></i></a>
+                        <a href="{% url 'automation:app_delete' slug=app.slug %}"><i class="fa-solid fa-trash fa-xl" style="color: #b20606;"></i></a>
+                    </td>
+                </tr>
+                {% empty %}
+                </tr>
+
+                    <td colspan="5">{% trans "No apps found." %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+        
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <div class="step-links">
+                <div class="previous">
+                    {% if page_obj.has_previous %}
+                    <a href="?{{ query_params }}&page={{ page_obj.previous_page_number }}">&laquo; {% trans "Previous" %}</a>
+                    {% else %}
+                    <span class="disabled">&laquo; {% trans "Previous" %}</span>
+                    {% endif %}
+                </div>
+                <div class="next">
+                    {% if page_obj.has_next %}
+                    <a href="?{{ query_params }}&page={{ page_obj.next_page_number }}">{% trans "Next" %} &raquo;</a>
+                    {% else %}
+                    <span class="disabled">{% trans "Next" %} &raquo;</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+        
+
+{% endblock %}

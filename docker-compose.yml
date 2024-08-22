@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: adminuser
+      MYSQL_PASSWORD: adminpassword
+    ports:
+      - "3308:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  web:
+    build: ./docker
+    command: python3 app/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - C:/Users/mahmo/AppData/Local/Android/Sdk:/opt/android-sdk
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=adminuser
+      - MYSQL_PASSWORD=adminpassword
+    depends_on:
+      db:
+        condition: service_healthy
+
+  appium:
+    image: appium/appium
+    ports:
+      - "4723:4723"
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4723/wd/hub/status"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
+
+  emulator:
+    image: butomo1989/docker-android-x86-7.1.1
+    privileged: true
+    environment:
+      - DEVICE=Nexus 5
+      - APPIUM=true
+    ports:
+      - "6080:6080"
+      - "5554:5554"
+      - "5555:5555"
+
+volumes:
+  db_data:
