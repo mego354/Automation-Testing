@@ -23,7 +23,7 @@ A Django application designed to automate the testing of APK files on Android de
 Clone the repository using the following command:
 
    ```sh
-    git clone -b master --single-branch https://github.com/mego354/automation-test.git
+    git clone -b master --single-branch https://github.com/mego354/Automation-Testing.git
    ```
 
 ## Update Email Configuration
