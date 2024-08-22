@@ -130,7 +130,7 @@ Update the MySQL database connection settings:
    ```
 3. Update the Email credentials
    ```python
-   EMAIL_HOST_USER = 'example@gmail.com'  # Replace with your SMTP username
+   EMAIL_HOST_USER = 'example@gmail.com'  # Replace with your EMAIL account
    EMAIL_HOST_PASSWORD = 'examplepass'  # Replace with your SMTP password 
    ```
 you can get SMTP password from gmail 
