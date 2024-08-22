@@ -10,8 +10,6 @@ A Django application designed to automate the testing of APK files on Android de
 - [Clone the Project](#clone-the-project)
 - [Update Database Configuration](#update-database-configuration)
 - [Run the Project](#run-the-project)
-- [Create an AVD Model](#create-an-avd-model)
-- [Run Appium](#run-appium)
 - [Application Guidance](#application-guidance)
 
 ## Installation
