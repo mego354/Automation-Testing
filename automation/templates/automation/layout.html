@@ -8,7 +8,7 @@
     <title>{% block title %} {% trans "Automation Testing" %}{% endblock %} </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.6.0/css/all.css">
-    <link rel="stylesheet" href="{% static 'automation/sstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'automation/style.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </head>
 
@@ -29,6 +29,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'automation:home' %}">{% trans "Home" %}</a>
                     </li>
@@ -38,7 +39,7 @@
                     <li class="nav-item">
                         <button id="toggle-contrast" class="nav_options btn"><i id="dark_icon" class="fa-solid fa-sun" style="color: #FFD43B;"></i></button>
                     </li>
-                    <!-- Add this wrapper class to align all the remaining items to the left -->
+
                     <li class="nav-item ms-auto">
                         <ul class="navbar-nav flex-row">
                             <li class="nav-item">
@@ -72,6 +73,7 @@
                             </li>
                         </ul>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -90,7 +92,7 @@
     </footer>
 
     <script src="{% static 'automation/index.js' %}"></script>
-    <script>// Language Switcher (Placeholder for actual language switching logic)
+    <script>
         function switchLanguage() {
             const language = document.getElementById('language-switcher').value;
             window.location.href = "{% url 'automation:switch_language' %}?language=" + language;

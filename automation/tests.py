@@ -1,5 +1,4 @@
 import os
-import subprocess
 import tempfile
 import shutil
 from django.conf import settings
@@ -131,7 +130,7 @@ class AppiumTestCase(TestCase):
         # Create a sample AVD instance for testing
         self.avd = AVD.objects.create(
             name="Test AVD",
-            sdk_root="C:/Users/mahmo/AppData/Local/Android/Sdk",  # Adjust this to your SDK path
+            sdk_root="C:/Users/USER_NAME/AppData/Local/Android/Sdk",  # Adjust this to your SDK path
             service_url="http://localhost:4724",
         )
 

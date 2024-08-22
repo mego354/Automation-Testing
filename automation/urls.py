@@ -7,6 +7,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 app_name = "automation" 
+
 urlpatterns = [
     #################################### Manage Account ####################################
     path('register/', views.RegisterView.as_view(), name='register'),

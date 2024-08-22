@@ -253,9 +253,8 @@ footer.footer a:hover {
 /* Error Messages */
 .styled-form .error {
     color: red;
-    margin-top: -10px;
     margin-bottom: 15px;
-    font-size: 14px;
+    font-size: var(--font-size-p);
 }
 
 /* Success Messages */

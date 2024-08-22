@@ -124,45 +124,56 @@ Update the MySQL database connection settings:
             'USER': 'your_username',
             'PASSWORD': 'your_password',
             'HOST': 'localhost',
-            'PORT': '3306',
+            'PORT': '3307',
         }
     }
    ```
+3. Update the Email credentials
+   ```python
+   EMAIL_HOST_USER = 'example@gmail.com'  # Replace with your SMTP username
+   EMAIL_HOST_PASSWORD = 'examplepass'  # Replace with your SMTP password 
+   ```
+you can get SMTP password from gmail 
 
 ## Run the Project
-1. Change the directory to your project path:
+1. Change the directory to the project path:
    ```sh
-    cd path/to/your/project
+    cd path/to/project
    ```
 
-2. Run migrations:
+2. Install necessary libraries:
+   ```sh
+    pip install -r requirements.txt
+   ```
+
+3. Run migrations:
 
    ```sh
     python manage.py migrate
    ```
 
-3. Create a superuser:
+4. Create a superuser:
 
    ```sh
     python manage.py createsuperuser
    ```
 
-4. Start the Django development server:
+5. Start the Django development server:
 
    ```sh
     python manage.py runserver
    ```
 
-5. Access the app at http://localhost:8000/admin to log in with the superuser credentials.
+6. Access the app at http://localhost:8000/admin to log in with the superuser credentials.
 
-6. Create an AVD Model:
+7. Create an AVD Model:
     - Go to the AVD model in the Django admin panel.
     - Create a new AVD entry with the following details:
     - Name: The name of the device (e.g., Pixel_7_Pro_API_33).
     - SDK Root Path: The SDK root path of your device.
     - Appium Link: http://localhost:4724.
 
-7. Run Appium
+8. Run Appium
 Start the Appium server using the following command:
 
    ```sh
@@ -172,11 +183,13 @@ Start the Appium server using the following command:
 Once the server is running, you can enter the app route, create applications, and run the automation tests as desired.
 
 ## Application Guidance
+
 ### Testing:
-before using the application you can check the application using
-   ```sh
-    py manage.py test
-   ```
+before using the application you can check the application:
+1. Open  project/automation/tests.py
+2. Edit lines 133, 134 with the credentials of the craeted AVD Model from before
+3. Run appium server `appium -p 4724`
+4. run the test using `py manage.py test`
 
 ### usage:
 1. Run Appium with `appium -p 4724` and verify it's running by checking the logs.

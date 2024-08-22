@@ -61,11 +61,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'  : 'django.db.backends.mysql',  
-        'NAME'    : 'django_db',                  
-        'USER'    : 'megahd',                     
-        'PASSWORD': '@adminnnn',              
-        'HOST'    : 'localhost',                
-        'PORT'    : '3307',
+        'USER'    : 'user',                        # Edit the USER of the database 
+        'NAME'    : 'db_name',                     # Edit the NAME of the database    
+        'PASSWORD': 'db_pass',                     # Edit the PASSWORD of the database 
+        'HOST'    : 'localhost',                   # Edit the HOST of the database 
+        'PORT'    : '3307',                        # Edit the PORT of the database 
     }
 }
 
@@ -86,7 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en'
-
 LANGUAGES = [
     ('en', 'English'),
     ('fr', 'French'),
@@ -113,9 +112,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mahmoudmegahd010000@gmail.com'  # Replace with your SMTP username
-EMAIL_HOST_PASSWORD = 'nuiovtbksdoxoemb'  # Replace with your SMTP password
-DEFAULT_FROM_EMAIL = 'automation Support team'
+EMAIL_HOST_USER = 'example@gmail.com'  # Replace with your SMTP username
+EMAIL_HOST_PASSWORD = 'examplepass'  # Replace with your SMTP password
 
+DEFAULT_FROM_EMAIL = 'automation Support team'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

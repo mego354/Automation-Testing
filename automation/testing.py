@@ -337,5 +337,7 @@ class AppiumTestAutomation:
                 return {'status': 'error', 'cause': str(e)}
 
 # Example usage:
-# test = AppiumTestAutomation()
-# result = test.run_test(app_model_instance)
+# app = get_object_or_404(APP, slug=kwargs['slug'])
+# avd = AVD.objects.order_by('-id').first()
+# test = AppiumTestAutomation(avd)
+# result = test.run_test(app) 
