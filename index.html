@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android APK Automation Testing with Appium</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.6.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    
+    <style>
+        /* Default Font Sizes */
+        :root {
+            --font-color-v1: rgb(255, 219, 154);
+            --dark-color-v1: #0c0414;
+
+            --font-size-h1-small: 24px;
+            --font-size-h1-medium: 36px;
+            --font-size-h1-large: 48px;
+            --font-size-h1-vlarge: 60px;
+
+            --font-size-h2-small: 18px;
+            --font-size-h2-medium: 24px;
+            --font-size-h2-large: 30px;
+            --font-size-h2-vlarge: 36px;
+
+            --font-size-h3-small: 16px; 
+            --font-size-h3-medium: 20px; 
+            --font-size-h3-large: 24px; 
+            --font-size-h3-vlarge: 28px; 
+
+            --font-size-a-small: 12px; 
+            --font-size-a-medium: 16px; 
+            --font-size-a-large: 20px; 
+            --font-size-a-vlarge: 24px; 
+
+            --font-size-p-small: 12px;
+            --font-size-p-medium: 16px;
+            --font-size-p-large: 20px;
+            --font-size-p-vlarge: 24px;
+
+            /* Default font sizes */
+            --font-size-h1: var(--font-size-h1-medium);
+            --font-size-h2: var(--font-size-h2-medium);
+            --font-size-h3: var(--font-size-h3-medium);
+            --font-size-a: var(--font-size-a-medium);
+            --font-size-p: var(--font-size-p-medium);
+        }
+
+        /* General Styles */
+        html, body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .body_container{
+            min-height: calc(100vh - 50px);
+            padding-inline: 30px;
+            padding-block: 30px;
+        }
+
+        body, h1, h2, h3, h4, h5, h6, p, div, a, .btn {
+            font-size: inherit;
+        }
+
+        /* High Contrast Mode */
+        .high-contrast {
+            background-color: var(--dark-color-v1) !important;
+            color: #fff !important;
+        }
+        .high-contrast .page_title_holder{
+            background-color: #e3f2fd !important;
+        }
+        .high-contrast .page_title, .high-contrast li, .high-contrast .styled-form{
+            color: var(--dark-color-v1) !important;
+        }
+        .high-contrast .table-dark{
+            --bs-table-color: var(--dark-color-v1) !important;
+            --bs-table-bg: #e3f2fd !important;
+        }
+        .high-contrast .navbar{
+            background-color: rgba(227, 242, 253, 0.95) !important;
+        }
+        .high-contrast .demo-card{
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+        .high-contrast .hero-section{
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+        }
+        .high-contrast .feature-section{
+            background-color: #1a1a2e !important;
+        }
+        .high-contrast .demo-section{
+            background-color: var(--dark-color-v1) !important;
+        }
+        .high-contrast .tech-section{
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%) !important;
+        }
+        .high-contrast .styled-form{
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+        .high-contrast .styled-form label{
+            color: #fff !important;
+        }
+        .high-contrast .styled-form input,
+        .high-contrast .styled-form select,
+        .high-contrast .styled-form textarea{
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        .high-contrast .screenshot-placeholder,
+        .high-contrast .video-placeholder{
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: #fff !important;
+            color: #fff !important;
+        }
+        .high-contrast .ui-hierarchy-demo{
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+
+        #toggle-contrast {
+            padding: 0;
+            font-size: var(--font-size-h2);
+        }
+
+        /* Applying font sizes */
+        h1 {
+            font-size: var(--font-size-h1);
+        }    
+
+        h2 {
+            font-size: var(--font-size-h2);
+        }    
+
+        h3{
+            font-size: var(--font-size-h3); 
+        }    
+
+        a {
+            font-size: var(--font-size-a); 
+        }    
+
+        p, li, td, th, .btn , div{
+            font-size: var(--font-size-p);
+        }    
+
+        .navbar-nav.ms-auto {
+            margin-left: auto;
+        }    
+
+        .navbar-nav.flex-row {
+            flex-direction: row !important;
+            justify-content: flex-start;
+        }    
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }    
+
+        nav{
+            background-color: #e3f2fd;
+        }    
+        .navbar-brand {
+            font-weight: bold;
+            font-size: var(--font-size-h2);
+        }    
+        .nav_options  {
+            font-size: var(--font-size-p) ;
+
+        }    
+
+        footer.footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+        }    
+
+        footer.footer p {
+            margin: 0;
+            font-size: 14px;
+        }    
+
+        footer.footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 0 10px;
+        }    
+
+        footer.footer a:hover {
+            text-decoration: underline;
+        }    
+
+        .page_title_holder{
+            background-color: var(--dark-color-v1);
+            backdrop-filter: blur(10px);
+            padding: 5px 15px;
+            border-radius: 10px;
+            width: max-content;
+            min-width: 150px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .page_title {
+            color: var(--font-color-v1);
+            padding-top: 15px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-family: "Black Ops One";
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .form-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Form Container */
+        .styled-form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Fields */
+        .styled-form input,
+        .styled-form select,
+        .styled-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            font-size: var(--font-size-p) !important; 
+            transition: border-color 0.3s ease;
+        }
+
+        .styled-form input:focus,
+        .styled-form select:focus,
+        .styled-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            font-size: var(--font-size-p) !important; 
+        }
+
+        /* Placeholder Text */
+        .styled-form input::placeholder,
+        .styled-form select::placeholder,
+        .styled-form textarea::placeholder {
+            font-size: var(--font-size-p) !important; 
+            color: #999; 
+        }
+        /* Labels */
+        .styled-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Container for the button */
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Buttons */
+        .styled-form button {
+            max-width: max-content; 
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: var(--font-size-p);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .styled-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error Messages */
+        .styled-form .error {
+            color: red;
+            margin-bottom: 15px;
+            font-size: var(--font-size-p);
+        }
+
+        /* Success Messages */
+        .styled-form .success {
+            color: green;
+            margin-bottom: 15px;
+            font-size: var(--font-size-p);
+        }
+
+        .pagination{
+            --bs-pagination-font-size: var(--font-size-p);
+            font-size: var(--font-size-p);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .step-links {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .previous, .next {
+            display: inline-block;
+        }
+
+        .step-links a, .step-links span {
+            text-decoration: none;
+            padding: 8px 16px;
+            color: var(--font-color-v1);
+            border: 1px solid var(--font-color-v1);
+            border-radius: 5px;
+        }
+
+        .step-links .disabled {
+            color: #6c757d;
+            border-color: #6c757d;
+            cursor:not-allowed;
+        }
+
+        .step-links a:hover {
+            background-color: var(--font-color-v1);
+            color: #fff;
+        }
+
+        .ui_container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .ui_element {
+            border: 1px solid #ccc;
+            padding: 2px 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Landing Page Specific Styles */
+        .section {
+            min-height: 100vh;
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-section {
+            background-color: #f8f9fa;
+        }
+
+        .tech-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-section {
+            background-color: #ffffff;
+        }
+
+        .demo-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .screenshot-placeholder {
+            background-color: #e9ecef;
+            border: 2px dashed #6c757d;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            border-radius: 8px;
+        }
+
+        .video-placeholder {
+            background-color: #000;
+            color: white;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .ui-hierarchy-demo {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .scroll-indicator a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-indicator a.active {
+            background-color: #007bff;
+        }
+
+        .navbar.fixed-top {
+            background-color: rgba(227, 242, 253, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">App Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testing">Testing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#technology">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="toggle-contrast" class="nav_options btn"><i id="dark_icon" class="fa-solid fa-sun" style="color: #FFD43B;"></i></button>
+                    </li>
+                    <li class="nav-item ms-auto">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item">
+                                <select id="font-size-switcher" class="btn-outline-secondary nav_options form-control" onchange="changeFontSize()">
+                                    <option value="small">Small</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="vlarge">Very Large</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <a href="#home" class="active"></a>
+        <a href="#features"></a>
+        <a href="#demo"></a>
+        <a href="#testing"></a>
+        <a href="#technology"></a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1>Android APK Automation Testing</h1>
+                    <p class="lead">Automate the testing of APK files on Android devices using Appium and Django</p>
+                    <div class="mt-4">
+                        <a href="#features" class="btn btn-light btn-lg me-3">Explore Features</a>
+                        <a href="#testing" class="btn btn-outline-light btn-lg me-3">Testing Workflow</a>
+                        <a href="#demo" class="btn btn-outline-light btn-lg">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section feature-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Key Features</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-mobile-screen fa-3x text-primary mb-3"></i>
+                        <h4>APK Testing</h4>
+                        <p>Upload and test Android APK files automatically using Appium automation framework with Android Virtual Devices (AVD).</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-video fa-3x text-success mb-3"></i>
+                        <h4>Screen Recording</h4>
+                        <p>Record video of the entire testing process and capture screenshots before and after interactions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-code fa-3x text-info mb-3"></i>
+                        <h4>UI Hierarchy</h4>
+                        <p>Extract and visualize the complete UI element hierarchy of tested applications in XML format.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-user-plus fa-3x text-warning mb-3"></i>
+                        <h4>User Management</h4>
+                        <p>Secure user authentication with registration, login, and password management features.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-list fa-3x text-secondary mb-3"></i>
+                        <h4>App Management</h4>
+                        <p>Organize and manage your uploaded APK files with detailed metadata and test status tracking.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="demo-card text-center">
+                        <i class="fa-solid fa-universal-access fa-3x text-danger mb-3"></i>
+                        <h4>Accessibility</h4>
+                        <p>Built-in accessibility features including high contrast mode, font size adjustment, and multi-language support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section demo-section">
+        <div class="container">
+            <!-- Authentication Demo -->
+            <div class="row mb-5">
+                <div class="col-12 text-center mb-4">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Authentication</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <h4>Login</h4>
+                        <form class="styled-form">
+                            <div class="mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" placeholder="Enter your username" value="demo_user">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" value="••••••••">
+                            </div>
+                            <div class="button-container">
+                                <button type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <h4>Register</h4>
+                        <form class="styled-form">
+                            <div class="mb-3">
+                                <label for="reg_username">Username</label>
+                                <input type="text" id="reg_username" placeholder="Choose a username" value="new_user">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_email">Email</label>
+                                <input type="email" id="reg_email" placeholder="Enter your email" value="user@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_password1">Password</label>
+                                <input type="password" id="reg_password1" placeholder="Create a password" value="••••••••">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_password2">Confirm Password</label>
+                                <input type="password" id="reg_password2" placeholder="Confirm password" value="••••••••">
+                            </div>
+                            <div class="button-container">
+                                <button type="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apps Management Demo -->
+            <div class="row mb-5">
+                <div class="col-12 text-center mb-4">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Apps Management</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="demo-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>My Applications</h4>
+                            <button class="btn btn-outline-info">Create New App</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th>App Name</th>
+                                        <th>Uploaded At</th>
+                                        <th>Tested</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Sample App</td>
+                                        <td>2024-01-15 10:30:00</td>
+                                        <td><i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i></td>
+                                        <td>
+                                            <i class="fa-solid fa-eye fa-xl" style="color: #74C0FC; padding-right:10px;"></i>
+                                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #74C0FC; padding-right:10px;"></i>
+                                            <i class="fa-solid fa-trash fa-xl" style="color: #b20606;"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Test App</td>
+                                        <td>2024-01-14 15:45:00</td>
+                                        <td><i class="fa-solid fa-xmark fa-xl" style="color: #ff0033;"></i></td>
+                                        <td>
+                                            <i class="fa-solid fa-eye fa-xl" style="color: #74C0FC; padding-right:10px;"></i>
+                                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #74C0FC; padding-right:10px;"></i>
+                                            <i class="fa-solid fa-trash fa-xl" style="color: #b20606;"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Creation Demo -->
+            <div class="row mb-5">
+                <div class="col-12 text-center mb-4">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Create Application</h2>
+                    </div>
+                </div>
+                <div class="col-md-8 mx-auto">
+                    <div class="demo-card">
+                        <form class="styled-form">
+                            <div class="mb-3">
+                                <label for="app_name">App Name</label>
+                                <input type="text" id="app_name" placeholder="Enter the name of the application" value="My Test App">
+                            </div>
+                            <div class="mb-3">
+                                <label for="apk_file">APK File</label>
+                                <input type="file" id="apk_file" accept=".apk">
+                                <small class="text-muted">Choose an APK file to upload</small>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Detail Demo -->
+            <div class="row mb-5">
+                <div class="col-12 text-center mb-4">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">App Details & Testing</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="demo-card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Sample App Details</h4>
+                                <p><strong>ID:</strong> #1 Uploaded by "demo_user"</p>
+                                <p><strong>APK File:</strong> <a href="#" download>Click to download <i class="fa-solid fa-download fa-l" style="color: #FFD43B;"></i></a></p>
+                                <p><strong>Created At:</strong> January 15, 2024, 10:30 a.m.</p>
+                                <p><strong>Updated At:</strong> January 15, 2024, 11:45 a.m.</p>
+                                <p><strong>Tested:</strong> <i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i></p>
+                                <p><strong>Screen Changed:</strong> <i class="fa-solid fa-check fa-xl" style="color: #74C0FC;"></i></p>
+                                
+                                <div class="mt-4">
+                                    <button class="btn btn-outline-secondary me-2">Back to My Apps</button>
+                                    <button class="btn btn-outline-danger me-2">Delete</button>
+                                    <button class="btn btn-outline-info me-2">Edit</button>
+                                    <button class="btn btn-outline-success">Run Test</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Test Results</h4>
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <p><strong>Video Recording</strong></p>
+                                        <div class="video-placeholder">
+                                            <i class="fa-solid fa-play fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p><strong>First Screen</strong></p>
+                                        <div class="screenshot-placeholder">
+                                            <i class="fa-solid fa-mobile-screen fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><strong>Second Screen</strong></p>
+                                        <div class="screenshot-placeholder">
+                                            <i class="fa-solid fa-mobile-screen fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h4>UI Elements Hierarchy</h4>
+                            <a href="#" download>Click to download .xml <i class="fa-solid fa-download fa-l" style="color: #FFD43B;"></i></a>
+                            <div class="ui-hierarchy-demo mt-3">
+                                <div>&lt;hierarchy&gt;</div>
+                                <div style="margin-left: 20px;">&lt;android.widget.FrameLayout&gt;</div>
+                                <div style="margin-left: 40px;">&lt;android.widget.LinearLayout&gt;</div>
+                                <div style="margin-left: 60px;">&lt;android.widget.TextView text="Welcome" /&gt;</div>
+                                <div style="margin-left: 60px;">&lt;android.widget.Button text="Start" /&gt;</div>
+                                <div style="margin-left: 40px;">&lt;/android.widget.LinearLayout&gt;</div>
+                                <div style="margin-left: 20px;">&lt;/android.widget.FrameLayout&gt;</div>
+                                <div>&lt;/hierarchy&gt;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Workflow Section -->
+    <section id="testing" class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Automated Testing Workflow</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h3 class="text-center mb-4"><i class="fa-solid fa-play-circle me-2"></i>Complete Testing Process</h3>
+                        <p class="text-center lead">The app performs comprehensive automated testing of Android APK files using a sophisticated workflow that captures every aspect of the testing process.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4><i class="fa-solid fa-1 me-2"></i>Setup & Launch</h4>
+                        <ul>
+                            <li><strong>AVD Launch:</strong> Starts Android Virtual Device (emulator)</li>
+                            <li><strong>Appium Connection:</strong> Connects to Appium server (localhost:4724)</li>
+                            <li><strong>APK Installation:</strong> Installs the uploaded APK on the emulator</li>
+                            <li><strong>Driver Initialization:</strong> Sets up UIAutomator2 automation driver</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4><i class="fa-solid fa-2 me-2"></i>Recording & Analysis</h4>
+                        <ul>
+                            <li><strong>Screen Recording:</strong> Starts video recording (60 FPS)</li>
+                            <li><strong>Initial Screenshot:</strong> Captures first screen state</li>
+                            <li><strong>UI Hierarchy:</strong> Extracts complete XML structure</li>
+                            <li><strong>Button Detection:</strong> Finds first clickable button</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4><i class="fa-solid fa-3 me-2"></i>Interaction & Testing</h4>
+                        <ul>
+                            <li><strong>Button Click:</strong> Automatically clicks the first clickable button</li>
+                            <li><strong>Wait Period:</strong> Waits 5 seconds for UI changes</li>
+                            <li><strong>Second Screenshot:</strong> Captures screen after interaction</li>
+                            <li><strong>Change Detection:</strong> Compares before/after UI states</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4><i class="fa-solid fa-4 me-2"></i>Cleanup & Results</h4>
+                        <ul>
+                            <li><strong>Home Navigation:</strong> Returns to home screen</li>
+                            <li><strong>Stop Recording:</strong> Ends video capture</li>
+                            <li><strong>App Uninstall:</strong> Removes APK from emulator</li>
+                            <li><strong>Result Storage:</strong> Saves all media and data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4 class="text-center mb-4"><i class="fa-solid fa-microscope me-2"></i>What Gets Captured</h4>
+                        <div class="row">
+                            <div class="col-md-3 text-center mb-3">
+                                <i class="fa-solid fa-video fa-2x mb-2"></i>
+                                <h5>Video Recording</h5>
+                                <p>Complete test execution in MP4 format</p>
+                            </div>
+                            <div class="col-md-3 text-center mb-3">
+                                <i class="fa-solid fa-camera fa-2x mb-2"></i>
+                                <h5>Before Screenshot</h5>
+                                <p>Initial app state before interaction</p>
+                            </div>
+                            <div class="col-md-3 text-center mb-3">
+                                <i class="fa-solid fa-camera fa-2x mb-2"></i>
+                                <h5>After Screenshot</h5>
+                                <p>App state after button click</p>
+                            </div>
+                            <div class="col-md-3 text-center mb-3">
+                                <i class="fa-solid fa-code fa-2x mb-2"></i>
+                                <h5>UI Hierarchy XML</h5>
+                                <p>Complete element structure</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="demo-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                        <h4 class="text-center mb-4"><i class="fa-solid fa-cogs me-2"></i>Technical Implementation</h4>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h5><i class="fa-solid fa-robot me-2"></i>Appium Automation</h5>
+                                <p>Uses Appium 2.0 with UIAutomator2 driver for Android automation. Connects to local Appium server and controls the Android emulator programmatically.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5><i class="fa-solid fa-search me-2"></i>Element Detection</h5>
+                                <p>Recursively searches the UI hierarchy to find the first clickable button with a valid resource ID, ensuring reliable interaction.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5><i class="fa-solid fa-database me-2"></i>Data Storage</h5>
+                                <p>All test results, media files, and metadata are stored in MySQL database with Django's file handling system for easy retrieval and analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="section tech-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <div class="page_title_holder">
+                        <h2 class="page_title">Technology Stack</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="tech-card">
+                        <h4><i class="fa-brands fa-python me-2"></i>Backend Technologies</h4>
+                        <ul>
+                            <li><strong>Django 5.0.7</strong> - Web framework for rapid development</li>
+                            <li><strong>MySQL</strong> - Database for storing app data and test results</li>
+                            <li><strong>Pillow</strong> - Image processing for screenshots</li>
+                            <li><strong>Django Internationalization</strong> - Multi-language support (English/French)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="tech-card">
+                        <h4><i class="fa-solid fa-mobile-screen me-2"></i>Mobile Testing</h4>
+                        <ul>
+                            <li><strong>Appium 2.0</strong> - Cross-platform mobile automation</li>
+                            <li><strong>UIAutomator2</strong> - Android UI automation driver</li>
+                            <li><strong>Android SDK API 35</strong> - Latest Android development tools</li>
+                            <li><strong>Android Virtual Device (AVD)</strong> - Emulated Android devices</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="tech-card">
+                        <h4><i class="fa-solid fa-code me-2"></i>Frontend Technologies</h4>
+                        <ul>
+                            <li><strong>Bootstrap 5.3.2</strong> - Responsive UI framework</li>
+                            <li><strong>Font Awesome 6.6.0</strong> - Icon library</li>
+                            <li><strong>Custom CSS</strong> - Accessibility features and styling</li>
+                            <li><strong>JavaScript</strong> - Interactive functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="tech-card">
+                        <h4><i class="fa-solid fa-cogs me-2"></i>System Requirements</h4>
+                        <ul>
+                            <li><strong>Java JDK 22</strong> - Required for Android development</li>
+                            <li><strong>Node.js</strong> - For Appium installation and management</li>
+                            <li><strong>Android Studio</strong> - Android development environment</li>
+                            <li><strong>Python 3.x</strong> - Django application runtime</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="tech-card">
+                        <h4><i class="fa-solid fa-lightbulb me-2"></i>Complete Application Workflow</h4>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h5>1. Setup & Configuration</h5>
+                                <p>Configure Android Virtual Device (AVD) and Appium server connection. Set up database and email credentials for the Django application.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5>2. APK Upload & Management</h5>
+                                <p>Users can upload APK files through the web interface. The system stores metadata and file information in the database with unique slugs.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5>3. Automated Testing Process</h5>
+                                <p>Appium launches AVD, installs APK, starts recording, captures initial screenshot, finds first clickable button, clicks it, captures second screenshot, and stops recording.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h5>4. UI Analysis & Detection</h5>
+                                <p>The system extracts complete UI hierarchy XML, recursively searches for clickable elements, and compares before/after states to detect changes.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5>5. Media Capture & Storage</h5>
+                                <p>All test results including video recordings (MP4), screenshots (PNG), and UI hierarchy (XML) are stored in MySQL database with Django's file handling.</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5>6. Accessibility & Internationalization</h5>
+                                <p>Built-in accessibility features include high contrast mode, font size adjustment, and multi-language support (English/French) with Django i18n.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="tech-card">
+                        <h4><i class="fa-solid fa-key me-2"></i>Key Testing Features</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fa-solid fa-play me-2"></i>Automated Button Detection</h5>
+                                <p>The system automatically finds the first clickable button in the app's UI hierarchy by recursively searching through XML elements with <code>clickable="true"</code> and valid resource IDs.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fa-solid fa-camera me-2"></i>Before/After Screenshots</h5>
+                                <p>Captures screenshots before and after the button click to visually document the UI changes and test results for analysis and debugging.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fa-solid fa-video me-2"></i>Screen Recording</h5>
+                                <p>Records the entire testing process at 60 FPS, providing a complete video documentation of the automated test execution from start to finish.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fa-solid fa-code me-2"></i>UI Hierarchy Extraction</h5>
+                                <p>Extracts and stores the complete XML structure of the app's UI elements, enabling detailed analysis of the application's interface structure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-2">
+        <div class="container">
+            <p>&copy; 2024 Tradvo Inc. All rights reserved.</p>
+            <p>Based in Canada | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Load preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const highContrast = localStorage.getItem('highContrast') === 'true';
+            if (highContrast) {
+                document.body.classList.add('high-contrast');
+                var dark_icon = document.getElementById('dark_icon');
+                dark_icon.classList.remove('fa-sun');
+                dark_icon.classList.add('fa-moon');                
+            }
+
+            // Load Font Size Preference
+            const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+            document.getElementById('font-size-switcher').value = savedFontSize;
+            changeFontSize(); // Apply saved font size
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Update scroll indicator
+            window.addEventListener('scroll', updateScrollIndicator);
+        });
+
+        // High Contrast Mode Toggle
+        document.getElementById('toggle-contrast').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+            const isHighContrast = document.body.classList.contains('high-contrast');
+            localStorage.setItem('highContrast', isHighContrast);
+            var dark_icon = document.getElementById('dark_icon');
+            if (dark_icon.classList.contains('fa-sun')) {
+                dark_icon.classList.remove('fa-sun');
+                dark_icon.classList.add('fa-moon');
+            } else {
+                dark_icon.classList.remove('fa-moon');
+                dark_icon.classList.add('fa-sun');
+            }
+        });    
+
+        // Font Size Change Function
+        function changeFontSize() {
+            const fontSize = document.getElementById('font-size-switcher').value;
+            const fontSizeMap = {
+                'small': {
+                    '--font-size-h1': 'var(--font-size-h1-small)',
+                    '--font-size-h2': 'var(--font-size-h2-small)',
+                    '--font-size-h3': 'var(--font-size-h3-small)',
+                    '--font-size-p': 'var(--font-size-p-small)',
+                    '--font-size-a': 'var(--font-size-a-small)',
+                },
+                'medium': {
+                    '--font-size-h1': 'var(--font-size-h1-medium)',
+                    '--font-size-h2': 'var(--font-size-h2-medium)',
+                    '--font-size-h3': 'var(--font-size-h3-medium)',
+                    '--font-size-p': 'var(--font-size-p-medium)',
+                    '--font-size-a': 'var(--font-size-a-medium)',
+                },
+                'large': {
+                    '--font-size-h1': 'var(--font-size-h1-large)',
+                    '--font-size-h2': 'var(--font-size-h2-large)',
+                    '--font-size-h3': 'var(--font-size-h3-large)',
+                    '--font-size-p': 'var(--font-size-p-large)',
+                    '--font-size-a': 'var(--font-size-a-large)',
+                },
+                'vlarge': {
+                    '--font-size-h1': 'var(--font-size-h1-vlarge)',
+                    '--font-size-h2': 'var(--font-size-h2-vlarge)',
+                    '--font-size-h3': 'var(--font-size-h3-vlarge)',
+                    '--font-size-p': 'var(--font-size-p-vlarge)',
+                    '--font-size-a': 'var(--font-size-a-vlarge)',
+                }
+            };
+
+            const sizes = fontSizeMap[fontSize] || fontSizeMap['medium'];
+            for (const [key, value] of Object.entries(sizes)) {
+                document.documentElement.style.setProperty(key, value);
+            }
+
+            // Save user preference
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Update scroll indicator
+        function updateScrollIndicator() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const indicator = document.querySelector(`.scroll-indicator a[href="#${sectionId}"]`);
+
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.scroll-indicator a').forEach(a => a.classList.remove('active'));
+                    if (indicator) indicator.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

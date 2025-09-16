@@ -2,6 +2,9 @@
 
 A Django application designed to automate the testing of APK files on Android devices using Appium.
 
+## 🚀 Live Demo
+[Visit the Website](https://mego354.github.io/Automation-Testing/)
+
 ## Table of Contents
 
 - [Installation](#installation)
